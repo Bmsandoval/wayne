@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  wayne-api:
+    container_name: "wayne-api"
+    build:
+      context: .
+      dockerfile: "deployments/wayne/Dockerfile"
+    ports:
+      - '8080:8080'
+    links:
+      - wayne-db
+    depends_on:
+      - wayne-db
+  wayne-db:
+    container_name: "wayne-db"
+    hostname: wayne-db
+    image: mysql:8.0.21
+    #    build: "deployment/mysql"
+    ports:
+      - '3306:3306'
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_USER: "db-user"
+      MYSQL_PASSWORD: "db-pass"
+      MYSQL_DATABASE: "wayne"

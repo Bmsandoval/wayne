@@ -7,4 +7,4 @@ values.yaml
 node_modules
 build
 template
-.env
+secrets.json
