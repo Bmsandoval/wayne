@@ -1,0 +1,10 @@
+.idea
+vendor
+nohup.out
+values.yaml
+
+
+node_modules
+build
+template
+.env
