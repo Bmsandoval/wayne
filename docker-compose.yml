@@ -12,6 +12,8 @@ services:
       - wayne-db
     depends_on:
       - wayne-db
+    env_file:
+      - dev.env
   wayne-db:
     container_name: "wayne-db"
     hostname: wayne-db

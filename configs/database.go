@@ -7,14 +7,14 @@ import (
 
 type DatabaseConfiguration struct {
 	DbMigrationLocation string `json:"MIGRATION_LOCATION"`
-	DbSchema string `json:"MYSQL_SCHEMA"`
-	DbHost string `json:"MYSQL_HOST"`
-	DbPort string `json:"MYSQL_PORT"`
+	DbSchema string `json:"DB_SCHEMA"`
+	DbHost string `json:"DB_HOST"`
+	DbPort string `json:"DB_PORT"`
 }
 
 type DatabaseSecrets struct {
-	DbUser string `json:"MYSQL_USER"`
-	DbPass string `json:"MYSQL_PASS"`
+	DbUser string `json:"DB_USER"`
+	DbPass string `json:"DB_PASS"`
 }
 
 func GetDatabaseConfig(vipe viper.Viper) DatabaseConfiguration {

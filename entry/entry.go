@@ -19,7 +19,7 @@ func Entry() {
 		panic(err) }
 
 	// Setup Database
-	connection, err := db.Start(*config);
+	connection, err := db.Start(*config)
 	if err != nil {
 		panic(err) }
 	defer func() {
