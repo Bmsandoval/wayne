@@ -14,6 +14,7 @@ Table of contents
     * [5) Install Protoc](#5-install-protoc)
     * [6) Install DockerCE](#6-install-dockerce)
     * [7) Source Bash Profile](#7-source-the-bash-profile)
+* [Testing](#testing) 
   
 # Overview
 
@@ -67,3 +68,14 @@ Wayne (Way-In) is an open-source, self-hosted, auth solution written as a GoLang
 > ```
 > . .profile
 > ```
+
+---
+
+# Testing
+
+To test the application
+1. download BloomRPC. (postman-alternative for gRPC)
+2. 'import paths' and specify the 'servers' directory. hit 'refresh' if you ever change a proto file
+   * its the search-looking button next to refresh in the upper left
+3. now you can test it!!
+TODO: look into grpc-json-proxy (https://github.com/jnewmano/grpc-json-proxy)
