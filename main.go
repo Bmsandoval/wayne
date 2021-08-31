@@ -23,7 +23,7 @@ import (
 	"github.com/bmsandoval/wayne/entry"
 
 	// Import servers
-	_ "github.com/bmsandoval/wayne/servers/hello"
+	_ "github.com/bmsandoval/wayne/servers/authentication_server"
 
 	"math/rand"
 	"time"

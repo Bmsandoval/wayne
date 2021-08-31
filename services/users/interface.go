@@ -1,7 +1,6 @@
-package hello
+package users
 
 import (
-	"github.com/bmsandoval/wayne/db/models"
 	"github.com/bmsandoval/wayne/library/appcontext"
 )
 
@@ -17,10 +16,10 @@ func(h Helpable) NewHelper(appCtx appcontext.Context) (interface{}, error) {
 }
 
 func (h Helpable) ServiceName() string {
-	return "HelloSvc"
+	return "UserSvc"
 }
 
 type Service interface {
-	Create(greetingModel models.Greetings) (*models.Greetings, error)
-	Get() ([]models.Greetings, error)
+	Create(username string, password string) (string, error)
+	ValidatePassword(username string, password string) (bool, error)
 }
