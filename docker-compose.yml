@@ -5,7 +5,20 @@ services:
     container_name: "wayne-api"
     build:
       context: .
-      dockerfile: "deployments/wayne/Dockerfile"
+      dockerfile: "deployments/wayne/dev/Dockerfile"
+    ports:
+      - '8080:8080'
+    links:
+      - wayne-db
+    depends_on:
+      - wayne-db
+    env_file:
+      - dev.env
+  wayne-api-staging:
+    container_name: "wayne-api-staging"
+    build:
+      context: .
+      dockerfile: "deployments/wayne/staging/Dockerfile"
     ports:
       - '8080:8080'
     links:

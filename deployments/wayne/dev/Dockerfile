@@ -1,12 +1,9 @@
-FROM amazonlinux:2 AS base
-RUN yum update -y
+FROM golang:1.17-alpine AS base
+RUN apt update -y
 LABEL base=true
 
-FROM base AS builder
-# Install golang
-RUN amazon-linux-extras install -y golang1.11
-# Build release
-WORKDIR /wayne
+FROM base AS runner
+WORKDIR /app
 ADD go.mod .
 ADD go.sum .
 RUN go mod download
