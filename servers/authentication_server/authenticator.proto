@@ -17,30 +17,11 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "io.handler.examples.helloworld";
 option java_outer_classname = "HelloWorldProto";
+option go_package = "servers/authentication_server";
 
-package hello;
+package authentication_server;
 
 // The greeting service definition.
-<<<<<<< Updated upstream:servers/hello/greeter.proto
-service Greeter {
-  // Saves a greeting
-  rpc PostHello (PostHelloRequest) returns (PostHelloReply) {}
-  // Retrieves a greeting
-  rpc GetHello (GetHelloRequest) returns (GetHelloReply) {}
-}
-
-// The request message containing the user's name.
-message PostHelloRequest {
-  string greeting = 1;
-}
-// The response message containing the greetings
-message PostHelloReply {
-  string greeting = 1;
-}
-
-// The request message containing the user's name.
-message GetHelloRequest {
-=======
 service Authenticator {
     rpc UsernameAvailable (UsernameAvailableRequest) returns (UsernameAvailableResponse) {}
     // Saves a greeting
@@ -70,9 +51,7 @@ message CreateUserResponse {
 message AuthenticatePasswordRequest {
     string username = 1;
     string password = 2;
->>>>>>> Stashed changes:servers/authentication_server/authenticator.proto
 }
-// The response message containing the greetings
-message GetHelloReply {
-  repeated string greetings = 1;
+message AuthenticatePasswordResponse {
+    bool success = 1;
 }

@@ -11,7 +11,6 @@ require (
 	github.com/pressly/goose v2.6.0+incompatible
 	github.com/spf13/viper v1.6.2
 	github.com/square/squalor v0.0.0-20200306154055-f6f0a47cc344
-	github.com/stretchr/testify v1.2.2
 	golang.org/x/net v0.0.0-20200202094626-16171245cfb2 // indirect
 	golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5 // indirect
 	golang.org/x/text v0.3.2 // indirect

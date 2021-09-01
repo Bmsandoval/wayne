@@ -1,4 +1,4 @@
-package hello
+package authentication_server
 
 import (
 	"github.com/bmsandoval/wayne/servers"
@@ -13,7 +13,7 @@ type Server struct {
 //type Registerable struct {}
 func init() {
 	servers.Include(func(s *grpc.Server, ctx servers.ServerContext){
-		RegisterGreeterServer(s, &Server{
+		RegisterAuthenticatorServer(s, &Server{
 			ServerContext: ctx,
 		})
 	})

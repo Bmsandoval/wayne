@@ -2,16 +2,16 @@ package services
 
 import (
 	"github.com/bmsandoval/wayne/library/appcontext"
-	"github.com/bmsandoval/wayne/services/hello"
+	"github.com/bmsandoval/wayne/services/users"
 	"reflect"
 )
 
 type Bundle struct {
-	HelloSvc hello.Service
+	UserSvc users.Service
 }
 
 var bundlables = []bundlable{
-	hello.Helpable{},
+	users.Helpable{},
 }
 
 type bundlable interface {

@@ -12,7 +12,7 @@ var FindBySubSql = `
 `
 
 func (h *Helper) FindBySub(sub string, user models.User) (*models.User, error) {
-	statement, err := h.AppCtx.DB.Prepare(FindByUsernameSql)
+	statement, err := h.AppCtx.DB.Prepare(FindBySubSql)
 	if err != nil {
 		return nil, tracerr.Wrap(err)
 	}

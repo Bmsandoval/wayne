@@ -10,6 +10,11 @@ import (
 
 var DB *sql.DB
 
+type Connection struct {
+	Tx *sql.Tx
+	*sql.DB
+}
+
 func Start(config configs.Configuration) (*Connection, error){
 	// Open and ping database
 	if err := open(config); err != nil {
@@ -18,11 +23,10 @@ func Start(config configs.Configuration) (*Connection, error){
 	if err := migrate(config); err != nil {
 		return nil, err }
 	// Bind models for Squalor
-	connection, err := BindModels(DB)
-	if err != nil {
-		return nil, err }
 
-	return connection, nil
+	return &Connection{
+		DB: DB,
+	}, nil
 }
 
 func Stop() error {
