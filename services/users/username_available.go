@@ -5,13 +5,17 @@ import (
 )
 
 var UsernameAvailableSql = `
-    SELECT TOP 1 1
-    FROM users u
-    WHERE username = ?
+	SELECT COUNT(*) = 0
+	FROM (
+		SELECT 1
+		FROM users u
+		WHERE username = ?
+	    LIMIT 1
+	) AS found;
 `
 
 func (h *Helper) UsernameAvailable(username string) (bool, error) {
-	statement, err := h.AppCtx.DB.Prepare(FindByUsernameSql)
+	statement, err := h.AppCtx.DB.Prepare(UsernameAvailableSql)
 	if err != nil {
 		return false, tracerr.Wrap(err)
 	}

@@ -23,7 +23,7 @@ func (h *Helper) ValidatePassword(username string, password string, user models.
 		Scan(&user.Id, &user.Sub, &user.Username, &user.Password, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt)
 	if err != nil { return nil, tracerr.Wrap(err) }
 
-	err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
 	if err != nil {
 		return nil, tracerr.Wrap(err)
 	}

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `users` (
        ) virtual,
    username VARCHAR(75),
    UNIQUE KEY unique_username (username),
-   password binary(16),
+   password VARCHAR(75),
    created_at  DATETIME DEFAULT NOW(),
    updated_at  DATETIME DEFAULT NOW(),
    deleted_at  DATETIME
