@@ -21,6 +21,7 @@ option java_outer_classname = "HelloWorldProto";
 package hello;
 
 // The greeting service definition.
+<<<<<<< Updated upstream:servers/hello/greeter.proto
 service Greeter {
   // Saves a greeting
   rpc PostHello (PostHelloRequest) returns (PostHelloReply) {}
@@ -39,6 +40,37 @@ message PostHelloReply {
 
 // The request message containing the user's name.
 message GetHelloRequest {
+=======
+service Authenticator {
+    rpc UsernameAvailable (UsernameAvailableRequest) returns (UsernameAvailableResponse) {}
+    // Saves a greeting
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+    // Retrieves a greeting
+    rpc AuthenticatePassword (AuthenticatePasswordRequest) returns (AuthenticatePasswordResponse) {}
+}
+
+// USERNAME AVAILABLE
+message UsernameAvailableRequest {
+    string username = 1;
+}
+message UsernameAvailableResponse {
+    bool available = 1;
+}
+
+// CREATE USER
+message CreateUserRequest {
+    string username = 1;
+    string password = 2;
+}
+message CreateUserResponse {
+    bool success = 1;
+}
+
+// VALIDATE USER PASSWORD
+message AuthenticatePasswordRequest {
+    string username = 1;
+    string password = 2;
+>>>>>>> Stashed changes:servers/authentication_server/authenticator.proto
 }
 // The response message containing the greetings
 message GetHelloReply {

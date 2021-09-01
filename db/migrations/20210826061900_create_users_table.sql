@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `users` (
           24,0,'-')
        ) virtual,
    username VARCHAR(75),
+   UNIQUE KEY unique_username (username),
    password VARCHAR(75),
    created_at  DATETIME DEFAULT NOW(),
    updated_at  DATETIME DEFAULT NOW(),

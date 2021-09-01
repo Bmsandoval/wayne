@@ -17,8 +17,8 @@ services:
   wayne-db:
     container_name: "wayne-db"
     hostname: wayne-db
-    image: mysql:8.0.21
-    #    build: "deployment/mysql"
+    build: "deployments/mysql"
+    #    image: mysql:8.0.21
     ports:
       - '3306:3306'
     restart: always

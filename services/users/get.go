@@ -1,4 +1,4 @@
-package hello
+package users
 
 import "github.com/bmsandoval/wayne/db/models"
 
