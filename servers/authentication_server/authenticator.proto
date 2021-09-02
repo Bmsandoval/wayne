@@ -24,9 +24,7 @@ package authentication_server;
 // The greeting service definition.
 service Authenticator {
     rpc UsernameAvailable (UsernameAvailableRequest) returns (UsernameAvailableResponse) {}
-    // Saves a greeting
     rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
-    // Retrieves a greeting
     rpc AuthenticatePassword (AuthenticatePasswordRequest) returns (AuthenticatePasswordResponse) {}
 }
 
