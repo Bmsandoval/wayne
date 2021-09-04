@@ -18,7 +18,7 @@
 // 	protoc        v3.15.6
 // source: servers/authentication_server/authenticator.proto
 
-package authentication_server
+package authenticator
 
 import (
 	context "context"

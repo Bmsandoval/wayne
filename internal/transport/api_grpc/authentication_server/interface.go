@@ -1,6 +1,7 @@
 package authentication_server
 
 import (
+	"github.com/bmsandoval/wayne/protos/authenticator"
 	"github.com/bmsandoval/wayne/servers"
 	"google.golang.org/grpc"
 )
@@ -13,7 +14,7 @@ type Server struct {
 //type Registerable struct {}
 func init() {
 	servers.Include(func(s *grpc.Server, ctx servers.ServerContext){
-		RegisterAuthenticatorServer(s, &Server{
+		authenticator.RegisterAuthenticatorServer(s, &Server{
 			ServerContext: ctx,
 		})
 	})

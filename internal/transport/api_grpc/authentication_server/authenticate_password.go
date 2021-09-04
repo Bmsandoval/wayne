@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/bmsandoval/wayne/db/models"
 	"log"
+	pb ""
 )
 
 func (s *Server) AuthenticatePassword(ctx context.Context, in *AuthenticatePasswordRequest) (*AuthenticatePasswordResponse, error) {
