@@ -139,7 +139,7 @@ wayneMockServices () {
 
   # Note that in bash, non-zero exit codes are error codes. returning 0 means success
   if [[ "$?" == "0" ]]; then
-    MOCK_FOLDER="service"
+    MOCK_FOLDER="Services"
     SERVICE_DIR="${WAYNE_CODE_DIR}/internal/${MOCK_FOLDER}"
     SERVICES=$(find "${SERVICE_DIR}" -maxdepth 1 -mindepth 1 -type d)
     for SERVICE_PATH in ${SERVICES}

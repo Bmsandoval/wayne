@@ -20,11 +20,11 @@
 package main
 
 import (
-	"github.com/bmsandoval/wayne/internal/entry"
+	"github.com/bmsandoval/wayne/internal/Entry"
 
 	// Import Handlers
-	_ "github.com/bmsandoval/wayne/internal/transports/grpc_handlers/authentication_server"
-	_ "github.com/bmsandoval/wayne/internal/transports/http_handlers/auth_http_handlers"
+	_ "github.com/bmsandoval/wayne/internal/Transports/GrpcHandlers/authentication_server"
+	_ "github.com/bmsandoval/wayne/internal/Transports/HttpHandlers/auth_http_handlers"
 
 	"math/rand"
 	"time"
@@ -34,5 +34,5 @@ func main() {
 	// Should seed the randomizer once at start of app
 	rand.Seed(time.Now().UnixNano())
 
-	entry.Entry()
+	Entry.Entry()
 }
