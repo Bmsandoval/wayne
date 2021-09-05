@@ -17,9 +17,9 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "io.handler.examples.helloworld";
 option java_outer_classname = "HelloWorldProto";
-option go_package = "servers/authentication_server";
+option go_package = "protos/authenticator";
 
-package authentication_server;
+package authenticator;
 
 // The greeting service definition.
 service Authenticator {
