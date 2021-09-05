@@ -11,10 +11,10 @@ ADD go.mod .
 ADD go.sum .
 RUN go mod download
 ADD . .
-RUN mkdir -p build/db/migrations
+RUN mkdir -p build/migrations
 RUN cp secrets.ex.json build/secrets.json
 RUN go build -o ./build/elf .
-RUN cp db/migrations/* build/db/migrations/
+RUN cp migrations/* build/migrations/
 
 FROM base
 ENV AWS_REGION="${AWS_REGION}"

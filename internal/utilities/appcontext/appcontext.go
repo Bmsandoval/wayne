@@ -3,7 +3,7 @@ package appcontext
 import (
 	"context"
 	"github.com/bmsandoval/wayne/configs"
-	"github.com/bmsandoval/wayne/db"
+	"github.com/bmsandoval/wayne/internal/db"
 )
 
 type Context struct {

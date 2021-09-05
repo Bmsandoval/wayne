@@ -1,33 +1,33 @@
 package service
 
 import (
-	"github.com/bmsandoval/wayne/library/appcontext"
-	"github.com/bmsandoval/wayne/services/users"
+	"github.com/bmsandoval/wayne/internal/service/users"
+	"github.com/bmsandoval/wayne/internal/utilities/appcontext"
 	"reflect"
 )
 
 type Bundle struct {
-	UserSvc users.Service
+	UserSvc users.IUserSvc
 }
 
-var bundlables = []bundlable{
-	users.Helpable{},
+var bundlableServices = []IBundlable{
+	users.Bundlable{},
 }
 
-type bundlable interface {
-	NewHelper(appCtx appcontext.Context) (interface{}, error)
+type IBundlable interface {
+	CreateService(appCtx appcontext.Context) (interface{}, error)
 	ServiceName() string
 }
 
 func NewBundle(appCtx appcontext.Context) (*Bundle, error) {
 	bundle := &Bundle{}
 
-	for _, bundlable := range bundlables {
-		helper, err := bundlable.NewHelper(appCtx)
+	for _, bundlableService := range bundlableServices {
+		helper, err := bundlableService.CreateService(appCtx)
 		if err != nil {
 			return nil, err
 		}
-		SetField(bundle, bundlable.ServiceName(), helper)
+		SetField(bundle, bundlableService.ServiceName(), helper)
 	}
 
 	return bundle, nil

@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/bmsandoval/wayne/db/models"
+	"github.com/bmsandoval/wayne/internal/db/models"
 	"github.com/ztrue/tracerr"
 )
 
@@ -11,7 +11,7 @@ var FindByUsernameSql = `
     WHERE username = ?
 `
 
-func (h *Helper) FindByUn(username string, user models.User) (*models.User, error) {
+func (h *UserSvc) FindByUn(username string, user models.User) (*models.User, error) {
 	statement, err := h.AppCtx.DB.Prepare(FindByUsernameSql)
 	if err != nil {
 		return nil, tracerr.Wrap(err)

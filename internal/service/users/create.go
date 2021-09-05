@@ -12,7 +12,7 @@ VALUES ( ?,?,UNHEX( REPLACE( ?,'-','' )));
 `
 
 
-func (h *Helper) Create(username string, password string) (string, error) {
+func (h *UserSvc) Create(username string, password string) (string, error) {
 	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.MinCost)
 	if err != nil {
 		return "", err

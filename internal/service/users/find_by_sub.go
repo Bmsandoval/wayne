@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/bmsandoval/wayne/db/models"
+	"github.com/bmsandoval/wayne/internal/db/models"
 	"github.com/ztrue/tracerr"
 )
 
@@ -11,7 +11,7 @@ var FindBySubSql = `
     WHERE Id = UNHEX( REPLACE( ?,'-','' ))
 `
 
-func (h *Helper) FindBySub(sub string, user models.User) (*models.User, error) {
+func (h *UserSvc) FindBySub(sub string, user models.User) (*models.User, error) {
 	statement, err := h.AppCtx.DB.Prepare(FindBySubSql)
 	if err != nil {
 		return nil, tracerr.Wrap(err)

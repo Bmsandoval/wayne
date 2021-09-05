@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/bmsandoval/wayne/db/models"
+	"github.com/bmsandoval/wayne/internal/db/models"
 	"github.com/ztrue/tracerr"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -13,7 +13,7 @@ var FindPasswordByUsernameSql = `
     WHERE username = ?
 `
 
-func (h *Helper) ValidatePassword(username string, password string, user models.User) (*models.User, error) {
+func (h *UserSvc) ValidatePassword(username string, password string, user models.User) (*models.User, error) {
 	statement, err := h.AppCtx.DB.Prepare(FindPasswordByUsernameSql)
 	if err != nil {
 		return nil, tracerr.Wrap(err)

@@ -131,8 +131,8 @@ wayneProtoc () {
 }
 
 
-# Generate mock files for all services, putting the results in the proper file. renames some stuff for consistency.
-# If you update any services, recommend running this function to update the services for the tests.
+# Generate mock files for all service, putting the results in the proper file. renames some stuff for consistency.
+# If you update any service, recommend running this function to update the service for the tests.
 wayneMockServices () {
   packageName="mockgen"
   which "${packageName}"
@@ -144,10 +144,10 @@ wayneMockServices () {
     SERVICES=$(find "${SERVICE_DIR}" -maxdepth 1 -mindepth 1 -type d)
     for SERVICE_PATH in ${SERVICES}
     do
-      if [[ -f ${SERVICE_PATH}/interface.go ]]; then
+      if [[ -f ${SERVICE_PATH}/abditory.go ]]; then
         FOLDER_NAME="${SERVICE_PATH##*/}"
         mockgen \
-          -source=${SERVICE_PATH}/interface.go \
+          -source=${SERVICE_PATH}/abditory.go \
           -destination=mocks/${MOCK_FOLDER}_mocks/${FOLDER_NAME}_mock.go \
           -package=${MOCK_FOLDER}_mocks \
           -mock_names Service=Mock_${FOLDER_NAME}

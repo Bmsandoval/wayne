@@ -20,10 +20,11 @@
 package main
 
 import (
-	"github.com/bmsandoval/wayne/entry"
+	"github.com/bmsandoval/wayne/internal/entry"
 
-	// Import servers
-	_ "github.com/bmsandoval/wayne/servers/authentication_server"
+	// Import Handlers
+	_ "github.com/bmsandoval/wayne/internal/transports/grpc_handlers/authentication_server"
+	_ "github.com/bmsandoval/wayne/internal/transports/http_handlers/auth_http_handlers"
 
 	"math/rand"
 	"time"

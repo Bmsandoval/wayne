@@ -5,7 +5,7 @@
 package services_mocks
 
 import (
-	models "github.com/bmsandoval/wayne/db/models"
+	models "github.com/bmsandoval/wayne/internal/db/models"
 	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
 )
@@ -36,7 +36,7 @@ func (m *Mock_hello) EXPECT() *Mock_helloMockRecorder {
 // Create mocks base method
 func (m *Mock_hello) Create(greetingModel models.Greetings) (*models.Greetings, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Create", greetingModel)
+	ret := m.ctrl.Call(m, "CreateService", greetingModel)
 	ret0, _ := ret[0].(*models.Greetings)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
@@ -45,7 +45,7 @@ func (m *Mock_hello) Create(greetingModel models.Greetings) (*models.Greetings, 
 // Create indicates an expected call of Create
 func (mr *Mock_helloMockRecorder) Create(greetingModel interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*Mock_hello)(nil).Create), greetingModel)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateService", reflect.TypeOf((*Mock_hello)(nil).Create), greetingModel)
 }
 
 // Get mocks base method

@@ -3,13 +3,18 @@ package entry
 import (
 	"fmt"
 	"github.com/bmsandoval/wayne/configs"
-	"github.com/bmsandoval/wayne/db"
-	"github.com/bmsandoval/wayne/library/appcontext"
-	"github.com/bmsandoval/wayne/servers"
-	"github.com/bmsandoval/wayne/services"
+	"github.com/bmsandoval/wayne/internal/db"
+	"github.com/bmsandoval/wayne/internal/service"
+	"github.com/bmsandoval/wayne/internal/transports/grpc_handlers"
+	"github.com/bmsandoval/wayne/internal/transports/http_handlers"
+	"github.com/bmsandoval/wayne/internal/utilities/appcontext"
+	"github.com/gorilla/mux"
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"net/http"
+	//gocache "github.com/pmylund/go-cache"
+	"github.com/soheilhy/cmux"
 )
 
 func Entry() {
@@ -35,19 +40,39 @@ func Entry() {
 	}
 
 	// Bundle Services
-	serviceBundle, err := services.NewBundle(ctx)
+	serviceBundle, err := service.NewBundle(ctx)
 	if err != nil {
 		panic(err) }
 
 	// Bundle Servers
-	s := grpc.NewServer()
-	servers.BundleAll(s, ctx, *serviceBundle)
+	grpcS := grpc.NewServer()
+	grpc_handlers.ConfigureGrpcHandlers(grpcS, ctx, *serviceBundle)
 
-	// Start Server
-	log.Println("Starting Server...")
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", config.SrvPort))
+	router := mux.NewRouter()
+	httpS := &http.Server{
+		Handler: router,
+	}
+	http_handlers.ConfigureHttpHandlers(router, ctx, *serviceBundle)
+
+	// Create the main listener.
+	l, err := net.Listen("tcp", fmt.Sprintf(":%s", config.SrvPort))
 	if err != nil {
-		panic(err) }
-	if err := s.Serve(lis); err != nil {
-		panic(err) }
+		log.Fatal(err)
+	}
+
+	// Create a cmux.
+	m := cmux.New(l)
+
+	// Match connections in order:
+	// First grpc, then HTTP
+	grpcL := m.Match(cmux.HTTP2HeaderField("content-type", "application/grpc"))
+	httpL := m.Match(cmux.HTTP1Fast())
+
+	// Use the muxed listeners for your servers.
+	go grpcS.Serve(grpcL)
+	go httpS.Serve(httpL)
+
+	// Start serving!
+	log.Println("Starting Server...")
+	m.Serve()
 }

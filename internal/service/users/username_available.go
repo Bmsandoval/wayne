@@ -14,7 +14,7 @@ var UsernameAvailableSql = `
 	) AS found;
 `
 
-func (h *Helper) UsernameAvailable(username string) (bool, error) {
+func (h *UserSvc) UsernameAvailable(username string) (bool, error) {
 	statement, err := h.AppCtx.DB.Prepare(UsernameAvailableSql)
 	if err != nil {
 		return false, tracerr.Wrap(err)
