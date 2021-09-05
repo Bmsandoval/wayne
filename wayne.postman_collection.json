@@ -1,61 +1,30 @@
 {
 	"info": {
-		"_postman_id": "36e469b8-793b-40cf-9233-b76f5c20a134",
+		"_postman_id": "2b74d7ee-88c8-4740-a544-2e40b716d944",
 		"name": "wayne",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "health",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/health",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"health"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ready",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/ready",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"ready"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "home",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "{{URL}}/home",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"home"
-					]
-				}
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Grumpy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/auth/username/available"
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
