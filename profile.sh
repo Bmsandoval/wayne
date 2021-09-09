@@ -65,7 +65,7 @@ ${_wayne_start_stop_options}"
       esac
     ;;
     'rebuild')
-      docker compose -f "${WAYNE_CODE_DIR}/App/docker compose.yml" build
+      docker compose -f "${WAYNE_CODE_DIR}/docker-compose.yml" build
     ;;
     'purge')
       case "${_subOption}" in

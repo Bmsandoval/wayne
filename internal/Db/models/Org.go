@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type Group struct {
+type Org struct {
 	Id        []uint8 `db:"id" json:"id"`
 	Sub       string  `db:"sub" json:"sub"`
 	Name  string  `db:"name" json:"name"`

@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "2b74d7ee-88c8-4740-a544-2e40b716d944",
+		"_postman_id": "c1c95785-17dc-42ee-bb66-0388fe973622",
 		"name": "wayne",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "home",
+			"name": "UsernameAvailable",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -22,7 +22,77 @@
 						}
 					}
 				},
-				"url": "localhost:8080/auth/username/available"
+				"url": {
+					"raw": "localhost:8080/auth/username/available",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"username",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Grumpy\",\n    \"password\": \"Testy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthenticatePassword",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Grumpy\",\n    \"password\": \"Testy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"user"
+					]
+				}
 			},
 			"response": []
 		}
